@@ -1,0 +1,89 @@
+﻿using DataBridge.API.Models.Foundations.Persons;
+using DataBridge.API.Models.Foundations.Persons.Exceptions;
+using FluentAssertions;
+using Microsoft.Data.SqlClient;
+using Moq;
+
+namespace DataBridge.API.UnitTests.ServicesTests.Foundations.PersonServicesTests;
+
+public partial class PersonServiceTests
+{
+    [Fact]
+    public async Task ShouldThrowCriticalDependencyExceptionOnRetrieveByIdIfSqlErrorOccursAndLogItAsync()
+    {
+        // given
+        Guid someId = Guid.NewGuid();
+        SqlException sqlException = GetSqlError();
+
+        var failedPersonStorageException =
+            new FailedPersonStorageException(sqlException);
+
+        PersonDependencyException expectedPersonDependencyException =
+            new PersonDependencyException(failedPersonStorageException);
+
+        this.storageBrokerMock.Setup(broker =>
+            broker.SelectPersonByIdAsync(It.IsAny<Guid>()))
+                .ThrowsAsync(sqlException);
+
+        // when
+        ValueTask<Person> retrievePersonById =
+            this.personService.GetPersonByIdAsync(someId);
+
+        PersonDependencyException actualPersonDependencyException =
+            await Assert.ThrowsAsync<PersonDependencyException>(
+                retrievePersonById.AsTask);
+
+        // then
+        actualPersonDependencyException.Should()
+            .BeEquivalentTo(expectedPersonDependencyException);
+
+        this.storageBrokerMock.Verify(broker =>
+            broker.SelectPersonByIdAsync(someId), Times.Once());
+
+        this.loggingBrokerMock.Verify(broker =>
+            broker.LogCritical(It.Is(SameExceptionAs(
+                expectedPersonDependencyException))), Times.Once);
+
+        this.storageBrokerMock.VerifyNoOtherCalls();
+        this.loggingBrokerMock.VerifyNoOtherCalls();
+    }
+
+    [Fact]
+    public async Task ShouldThrowServiceExceptionOnRetrieveByIdAsyncIfServiceErrorOccursAndLogItAsync()
+    {
+        // given
+        Guid someId = Guid.NewGuid();
+        Exception serverException = new Exception();
+
+        var failedPersonServiceException =
+            new FailedPersonServiceException(serverException);
+
+        PersonServiceException expectedPersonServiceException =
+            new PersonServiceException(failedPersonServiceException);
+
+        this.storageBrokerMock.Setup(broker =>
+            broker.SelectPersonByIdAsync(It.IsAny<Guid>()))
+                .ThrowsAsync(serverException);
+
+        // when
+        ValueTask<Person> retrievePersonById =
+            this.personService.GetPersonByIdAsync(someId);
+
+        PersonServiceException actualPersonServiceException =
+            await Assert.ThrowsAsync<PersonServiceException>(
+                retrievePersonById.AsTask);
+
+        // then
+        actualPersonServiceException.Should().BeEquivalentTo(expectedPersonServiceException);
+
+        this.storageBrokerMock.Verify(broker =>
+            broker.SelectPersonByIdAsync(someId), Times.Once);
+
+        this.loggingBrokerMock.Verify(broker =>
+            broker.LogError(It.Is(SameExceptionAs(
+                expectedPersonServiceException))), Times.Once);
+
+        this.storageBrokerMock.VerifyNoOtherCalls();
+        this.loggingBrokerMock.VerifyNoOtherCalls();
+    }
+}

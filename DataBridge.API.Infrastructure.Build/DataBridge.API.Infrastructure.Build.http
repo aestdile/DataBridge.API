@@ -1,0 +1,6 @@
+@DataBridge.API.Infrastructure.Build_HostAddress = http://localhost:5156
+
+GET {{DataBridge.API.Infrastructure.Build_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
