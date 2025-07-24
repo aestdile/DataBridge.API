@@ -1,0 +1,163 @@
+﻿<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DataBridge.API - Ma'lumotlar Ko'prigi</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Floating Particles -->
+    <div class="floating-particles">
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+    </div>
+
+    <div class="container">
+        <!-- Header Section -->
+        <header class="header">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-database"></i>
+                    <h1>DataBridge.API</h1>
+                </div>
+                <div class="header-text">
+                    <h2>DataBridge.API - Zamonaviy Ma'lumotlar Markazi</h2>
+                    <p>Excel ma'lumotlarini Microsoft SQL Server va XML formatiga professional darajada o'tkazish platformasi. Korporativ ma'lumotlar bilan ishlash uchun eng yaxshi yechim.</p>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Upload Section -->
+            <section class="upload-section">
+                <div class="card">
+                    <div class="card-header">
+                        <i class="fas fa-cloud-upload-alt"></i>
+                        <h3>Excel Fayl Yuklash</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="upload-area" id="uploadArea">
+                            <div class="upload-icon">
+                                <i class="fas fa-file-excel"></i>
+                            </div>
+                            <p>Excel faylni bu yerga sudrab tashlang yoki tanlash uchun bosing</p>
+                            <input type="file" id="fileInput" accept=".xlsx,.xls" hidden>
+                            <button class="btn btn-primary" onclick="document.getElementById('fileInput').click()">
+                                <i class="fas fa-folder-open"></i>
+                                Fayl Tanlash
+                            </button>
+                        </div>
+                        <div class="file-info" id="fileInfo" style="display: none;">
+                            <div class="file-details">
+                                <i class="fas fa-file-excel"></i>
+                                <span id="fileName"></span>
+                                <span id="fileSize"></span>
+                            </div>
+                            <button class="btn btn-success" id="uploadBtn">
+                                <i class="fas fa-upload"></i>
+                                Yuklash
+                            </button>
+                        </div>
+                        <div class="progress-container" id="progressContainer" style="display: none;">
+                            <div class="progress-bar">
+                                <div class="progress-fill" id="progressFill"></div>
+                            </div>
+                            <span class="progress-text" id="progressText">0%</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Download Section -->
+            <section class="download-section">
+                <div class="card">
+                    <div class="card-header">
+                        <i class="fas fa-download"></i>
+                        <h3>XML Fayl Yuklab Olish</h3>
+                    </div>
+                    <div class="card-body">
+                        <p>Barcha odamlar va ularning uy hayvonlari haqidagi ma'lumotlarni XML formatida yuklab oling.</p>
+                        <button class="btn btn-secondary" id="downloadBtn">
+                            <i class="fas fa-file-code"></i>
+                            XML Yuklab Olish
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Instructions Section -->
+            <section class="instructions-section">
+                <div class="card">
+                    <div class="card-header">
+                        <i class="fas fa-info-circle"></i>
+                        <h3>Foydalanish Bo'yicha Ko'rsatmalar</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="steps">
+                            <div class="step">
+                                <div class="step-number">1</div>
+                                <div class="step-content">
+                                    <h4>Excel Faylni Tayyorlang</h4>
+                                    <p>Odamlar va ularning uy hayvonlari haqidagi ma'lumotlarni o'z ichiga olgan Excel faylni tayyorlang (.xlsx yoki .xls formatida).</p>
+                                </div>
+                            </div>
+                            <div class="step">
+                                <div class="step-number">2</div>
+                                <div class="step-content">
+                                    <h4>Faylni Yuklang</h4>
+                                    <p>Yuqoridagi yuklash bo'limida Excel faylni tanlang va "Yuklash" tugmasini bosing. Fayl avtomatik ravishda qayta ishlanadi.</p>
+                                </div>
+                            </div>
+                            <div class="step">
+                                <div class="step-number">3</div>
+                                <div class="step-content">
+                                    <h4>Ma'lumotlarni Yuklab Oling</h4>
+                                    <p>Qayta ishlangan ma'lumotlarni XML formatida yuklab olish uchun "XML Yuklab Olish" tugmasini bosing.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Results Section -->
+            <section class="results-section" id="resultsSection" style="display: none;">
+                <div class="card">
+                    <div class="card-header">
+                        <i class="fas fa-code"></i>
+                        <h3>XML Natijalar</h3>
+                    </div>
+                    <div class="card-body">
+                        <div id="resultsContent"></div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>&copy; 2024 DataBridge.API. Barcha huquqlar himoyalangan.</p>
+        </footer>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loading-spinner">
+            <i class="fas fa-spinner fa-spin"></i>
+            <p>Iltimos kuting...</p>
+        </div>
+    </div>
+
+    <!-- Toast Notifications -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
