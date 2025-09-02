@@ -228,13 +228,7 @@ If you encounter any issues or have questions:
 - [ ] Docker containerization
 - [ ] Cloud deployment guides
 
-## 👨‍💻 Author
-
-**aestdile** - [GitHub Profile](https://github.com/aestdile)
-
----
-
-⭐ Don't forget to star this repository if you found it helpful!
+- [ ] ⭐ Don't forget to star this repository if you found it helpful!
 
 ## 📚 Additional Documentation
 
@@ -242,3 +236,31 @@ If you encounter any issues or have questions:
 - [Database Schema](docs/DATABASE.md)
 - [Deployment Guide](docs/DEPLOYMENT.md)
 - [Troubleshooting](docs/TROUBLESHOOTING.md)
+
+## ✍️ Muallif
+👤 Mukhtor Eshboyev\
+🔗 GitHub: [@aestdile](https://github.com/aestdile)\
+📌 "When you finish this project, upload it to GitHub and send me the repository link, I'll wait for it!"
+
+---
+
+## License
+
+This project is open-source and available under the MIT License.
+
+
+## 🌐 Social Networks
+
+<div align="center">
+  <a href="https://t.me/aestdile"><img src="https://img.shields.io/badge/Telegram-2CA5E0?style=for-the-badge&logo=telegram&logoColor=white" /></a>
+  <a href="https://github.com/aestdile"><img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white" /></a>
+  <a href="https://leetcode.com/aestdile"><img src="https://img.shields.io/badge/LeetCode-FFA116?style=for-the-badge&logo=leetcode&logoColor=black" /></a>
+  <a href="https://linkedin.com/in/aestdile"><img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" /></a>
+  <a href="https://youtube.com/@aestdile"><img src="https://img.shields.io/badge/YouTube-FF0000?style=for-the-badge&logo=youtube&logoColor=white" /></a>
+  <a href="https://instagram.com/aestdile"><img src="https://img.shields.io/badge/Instagram-E4405F?style=for-the-badge&logo=instagram&logoColor=white" /></a>
+  <a href="https://facebook.com/aestdile"><img src="https://img.shields.io/badge/Facebook-1877F2?style=for-the-badge&logo=facebook&logoColor=white" /></a>
+  <a href="mailto:aestdile@gmail.com"><img src="https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white" /></a>
+  <a href="https://twitter.com/aestdile"><img src="https://img.shields.io/badge/Twitter-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white" /></a>
+  <a href="tel:+998772672774"><img src="https://img.shields.io/badge/Phone:+998772672774-25D366?style=for-the-badge&logo=whatsapp&logoColor=white" /></a>
+</div>
+
