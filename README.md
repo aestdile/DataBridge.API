@@ -23,9 +23,9 @@ A powerful full-stack tool to transfer and export Excel data into Microsoft SQL 
 
 ## 📋 Prerequisites
 
-- .NET 6.0 or later
+- .NET 8.0
 - Microsoft SQL Server (LocalDB/Express/Full)
-- Visual Studio 2022 or Visual Studio Code
+- Visual Studio 2022 
 - SQL Server Management Studio (recommended)
 
 ## ⚡ Quick Start
