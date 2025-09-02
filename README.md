@@ -53,7 +53,7 @@ dotnet restore
 dotnet run
 ```
 
-The API will be available at `https://localhost:5001` (or configured port).
+The API will be available at `https://localhost:5001` 
 
 ## 📁 Project Structure
 
